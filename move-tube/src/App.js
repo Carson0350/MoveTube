@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Grid } from '@material-ui/core';
 
-import { SearchBar, VideoList, VideoDetail} from './components'
+import { SearchBar, VideoDetail} from './components'
 
 import ApiKey from './api/key/apiKey'
 
@@ -16,7 +16,8 @@ class App extends React.Component {
       params: {
         part: 'snippet',
         maxResults: 5,
-        key: ApiKey
+        key: ApiKey,
+        q: searchTerm,
       }
     });
     console.log(response)
@@ -24,9 +25,9 @@ class App extends React.Component {
 
   render () {
     return (
-      <Grid justify='center' container spaceing={16}>
+      <Grid justify='center' container spaceing={10}>
         <Grid item xs={12}>
-          <Grid container spaceing={16}>
+          <Grid container spaceing={10}>
             <Grid item xs={12}>
               <SearchBar onFormSubmit={this.handleSubmit}/>
             </Grid>
