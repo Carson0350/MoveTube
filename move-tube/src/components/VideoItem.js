@@ -1,10 +1,16 @@
-import React from 'react'
+import React from "react";
+import { Grid, Paper, Typography } from "@material-ui/core";
 
-import { Grid } from '@material-ui/core'
-
-const VideoList = () => {
-  const lostOfVideos = videos.map(() => {})
+// eslint-disable-next-line import/no-anonymous-default-export
+export default ({ video, onVideoSelect }) => {
   return (
-    <h1>videoList</h1>
-  )
+    <Grid item xs={12}>
+      <Paper style={{ display: "flex", alignItems: "center", cursor: "pointer" }} onClick={() => onVideoSelect(video)} >
+        <img style={{ marginRight: "20px" }} alt="thumbnail" src={video.snippet.thumbnails.medium.url} />
+        <Typography variant="subtitle1">
+          <b>{video.snippet.title}</b>
+        </Typography>
+      </Paper>
+    </Grid>
+  );
 }
