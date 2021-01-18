@@ -10,6 +10,11 @@ import youtube from './api/youtube'
 
 class App extends React.Component {
 
+  state = {
+    videos: [],
+    selectedVideo: null
+  }
+
   handleSubmit = async (searchTerm) => {
     const response = await youtube.get('search', {
       params: {
@@ -25,12 +30,13 @@ class App extends React.Component {
       selectedVideo: response.data.items[0]
     })
 
-    console.log(response);
+    console.log(response.data.items);
   }
 
   render () {
 
     const { selectedVideo } = this.state
+
     return (
       <Grid justify='center' container spaceing={10}>
         <Grid item xs={12}>
