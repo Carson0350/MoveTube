@@ -8,7 +8,6 @@ import ApiKey from './api/key/apiKey'
 
 import youtube from './api/youtube'
 
-
 class App extends React.Component {
 
   handleSubmit = async (searchTerm) => {
@@ -20,10 +19,18 @@ class App extends React.Component {
         q: searchTerm,
       }
     });
-    console.log(response)
+
+    this.setState({
+      videos: response.data.items,
+      selectedVideo: response.data.items[0]
+    })
+
+    console.log(response);
   }
 
   render () {
+
+    const { selectedVideo } = this.state
     return (
       <Grid justify='center' container spaceing={10}>
         <Grid item xs={12}>
@@ -32,7 +39,7 @@ class App extends React.Component {
               <SearchBar onFormSubmit={this.handleSubmit}/>
             </Grid>
             <Grid item xs={8}>
-              <VideoDetail />
+              <VideoDetail video={selectedVideo}/>
             </Grid>
             <Grid item xs={4}>
               {/* Video List */}
