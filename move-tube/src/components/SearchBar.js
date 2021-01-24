@@ -23,7 +23,6 @@ class SearchBar extends React.Component {
     event.preventDefault();
   }
 
-
   render () {
     return (
       <Paper elevation={6} style={{ padding: '25px' }}>
